@@ -1,0 +1,86 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <value>
+          <list size="73">
+            <item index="0" class="java.lang.String" itemvalue="radon" />
+            <item index="1" class="java.lang.String" itemvalue="traitlets" />
+            <item index="2" class="java.lang.String" itemvalue="jupyter-core" />
+            <item index="3" class="java.lang.String" itemvalue="zope-event" />
+            <item index="4" class="java.lang.String" itemvalue="colorlog" />
+            <item index="5" class="java.lang.String" itemvalue="smmap" />
+            <item index="6" class="java.lang.String" itemvalue="tabulate" />
+            <item index="7" class="java.lang.String" itemvalue="zope-interface" />
+            <item index="8" class="java.lang.String" itemvalue="python-dateutil" />
+            <item index="9" class="java.lang.String" itemvalue="flake8-polyfill" />
+            <item index="10" class="java.lang.String" itemvalue="mando" />
+            <item index="11" class="java.lang.String" itemvalue="nbformat" />
+            <item index="12" class="java.lang.String" itemvalue="wily" />
+            <item index="13" class="java.lang.String" itemvalue="plotly" />
+            <item index="14" class="java.lang.String" itemvalue="fastjsonschema" />
+            <item index="15" class="java.lang.String" itemvalue="gitdb" />
+            <item index="16" class="java.lang.String" itemvalue="pyrsistent" />
+            <item index="17" class="java.lang.String" itemvalue="colorama" />
+            <item index="18" class="java.lang.String" itemvalue="ruamel-yaml" />
+            <item index="19" class="java.lang.String" itemvalue="tenacity" />
+            <item index="20" class="java.lang.String" itemvalue="progress" />
+            <item index="21" class="java.lang.String" itemvalue="gitpython" />
+            <item index="22" class="java.lang.String" itemvalue="jsonschema" />
+            <item index="23" class="java.lang.String" itemvalue="ruamel-yaml-clib" />
+            <item index="24" class="java.lang.String" itemvalue="django-otp" />
+            <item index="25" class="java.lang.String" itemvalue="django-stubs" />
+            <item index="26" class="java.lang.String" itemvalue="pre-commit" />
+            <item index="27" class="java.lang.String" itemvalue="astroid" />
+            <item index="28" class="java.lang.String" itemvalue="redis" />
+            <item index="29" class="java.lang.String" itemvalue="frozenlist" />
+            <item index="30" class="java.lang.String" itemvalue="sentry-sdk" />
+            <item index="31" class="java.lang.String" itemvalue="graphviz" />
+            <item index="32" class="java.lang.String" itemvalue="uvicorn" />
+            <item index="33" class="java.lang.String" itemvalue="pyright" />
+            <item index="34" class="java.lang.String" itemvalue="django-celery-beat" />
+            <item index="35" class="java.lang.String" itemvalue="wrapt" />
+            <item index="36" class="java.lang.String" itemvalue="authlib" />
+            <item index="37" class="java.lang.String" itemvalue="pydyf" />
+            <item index="38" class="java.lang.String" itemvalue="whitenoise" />
+            <item index="39" class="java.lang.String" itemvalue="simplejson" />
+            <item index="40" class="java.lang.String" itemvalue="hiredis" />
+            <item index="41" class="java.lang.String" itemvalue="fonttools" />
+            <item index="42" class="java.lang.String" itemvalue="tlds" />
+            <item index="43" class="java.lang.String" itemvalue="refurb" />
+            <item index="44" class="java.lang.String" itemvalue="pygithub" />
+            <item index="45" class="java.lang.String" itemvalue="django-stubs-ext" />
+            <item index="46" class="java.lang.String" itemvalue="twilio" />
+            <item index="47" class="java.lang.String" itemvalue="django-yamlfield" />
+            <item index="48" class="java.lang.String" itemvalue="pip-tools" />
+            <item index="49" class="java.lang.String" itemvalue="brotli" />
+            <item index="50" class="java.lang.String" itemvalue="drf-yasg" />
+            <item index="51" class="java.lang.String" itemvalue="djangorestframework-stubs" />
+            <item index="52" class="java.lang.String" itemvalue="pygit2" />
+            <item index="53" class="java.lang.String" itemvalue="cron-descriptor" />
+            <item index="54" class="java.lang.String" itemvalue="zopfli" />
+            <item index="55" class="java.lang.String" itemvalue="jdatetime" />
+            <item index="56" class="java.lang.String" itemvalue="urllib3" />
+            <item index="57" class="java.lang.String" itemvalue="django-cors-headers" />
+            <item index="58" class="java.lang.String" itemvalue="websockets" />
+            <item index="59" class="java.lang.String" itemvalue="django-jsoneditor" />
+            <item index="60" class="java.lang.String" itemvalue="identify" />
+            <item index="61" class="java.lang.String" itemvalue="tzdata" />
+            <item index="62" class="java.lang.String" itemvalue="weasyprint" />
+            <item index="63" class="java.lang.String" itemvalue="dill" />
+            <item index="64" class="java.lang.String" itemvalue="python-gitlab" />
+            <item index="65" class="java.lang.String" itemvalue="types-ujson" />
+            <item index="66" class="java.lang.String" itemvalue="django-ipware" />
+            <item index="67" class="java.lang.String" itemvalue="pylint" />
+            <item index="68" class="java.lang.String" itemvalue="ruff" />
+            <item index="69" class="java.lang.String" itemvalue="temporalio" />
+            <item index="70" class="java.lang.String" itemvalue="pytz" />
+            <item index="71" class="java.lang.String" itemvalue="pyjwt" />
+            <item index="72" class="java.lang.String" itemvalue="requests-toolbelt" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
