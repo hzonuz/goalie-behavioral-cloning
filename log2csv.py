@@ -1,6 +1,6 @@
 import csv
 
-from parser import WorldModel
+from world_model import WorldModel
 
 
 class Log2CSV:
