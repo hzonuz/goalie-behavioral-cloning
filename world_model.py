@@ -18,20 +18,24 @@ class WorldModel:
 
         self.file_path = file_path
         self.file_name = file_path.split("/")[-1].split(".")[0]
-        self.left_team_name = re.split(
-            "_[0-9]+", re.split("^[0-9]+-", self.file_name.split("-vs-")[0])[1])[0]  # ^[0-9]+-  yz modify
-        self.right_team_name = re.split(
-            "_[0-9]+", self.file_name.split("-vs-")[1])[0]
+        self.left_team_name = "HELIOS2022"
+        # re.split(
+            # "_[0-9]+", re.split("^[0-9]+-", self.file_name.split("-vs-")[0])[1])[0]  # ^[0-9]+-  yz modify
+        self.right_team_name = "YuShan2022"
+        # re.split(
+        #     "_[0-9]+", self.file_name.split("-vs-")[1])[0]
 
-        self.left_team_score = int(self.file_name.split(
-            "-vs-")[0].split(self.left_team_name + "_")[1])
+        # self.left_team_score = int(self.file_name.split(
+        #     "-vs-")[0].split(self.left_team_name + "_")[1])
 
-        self.right_team_score = int(self.file_name.split(
-            "-vs-")[1].split(self.right_team_name + "_")[1])
+        # self.right_team_score = int(self.file_name.split(
+        #     "-vs-")[1].split(self.right_team_name + "_")[1])
 
         self.game_time = GameTime(0, 6000)
 
         self.last_kicker_side = "left"
+
+        self.mode = 'before_kick_off_l'
 
         rcgfile = file_path[0:-3] + "rcg"
         rclfile = file_path[0:-3] + "rcl"
@@ -91,7 +95,7 @@ class WorldModel:
                     elif self.right_team_name in line and not "Coach" in line:
                         rcl_unum = int(line.split(self.right_team_name)[1].split(": ")[0].split("_")[1])
 
-                        if rcl_cycle >= 6000 and rcl_cycle == 3000:
+                        if rcl_cycle >= 6000 or rcl_cycle == 3000:
                             self.rcl_r[rcl_cycle][rcl_unum] = PlayerObject(_unum=rcl_unum, action=action, team="right")
                             continue
 
@@ -153,14 +157,12 @@ class WorldModel:
 
         return Ball(ball_x, ball_y, ball_vx, ball_vy)
 
-    def game_mode(self, cycle=0):
-        if cycle == 0:
-            cycle = self.game_time.cycle()
-
-        if len(self.rcg) <= cycle:
-            return None
-
-        return self.rcg[cycle].split("((game_mode ")[1].split(")")[0]
+    def game_mode(self, cycle):
+        for i in self.playmode:
+            if i[0] <= cycle:
+                self.mode = i[1]
+            else:
+                break
 
     def get_our_players(self, cycle):
         return self.rcl_l[cycle]
