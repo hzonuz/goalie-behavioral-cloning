@@ -3,6 +3,21 @@ import re
 FULL_STATE_TIME = 6000
 
 
+def get_object_area(obj):
+    penalty_area = Rect2D(Vector2D(-52.5, -20), Vector2D(-36, 20))
+    left_corner_area = Rect2D(Vector2D(-52.5, -34), Vector2D(-36, -20))
+    right_corner_area = Rect2D(Vector2D(-52.5, 20), Vector2D(-36, 34))
+    upper_penalty_area = Rect2D(Vector2D(-36, -34), Vector2D(-25, 34))
+
+    if penalty_area.is_point_in(obj):
+        return 3
+    elif left_corner_area.is_point_in(obj) or right_corner_area.is_point_in(obj):
+        return 2
+    elif upper_penalty_area.is_point_in(obj):
+        return 1
+    return 0
+
+
 class WorldModel:
 
     def __init__(self, file_path):
@@ -20,7 +35,7 @@ class WorldModel:
         self.file_name = file_path.split("/")[-1].split(".")[0]
         self.left_team_name = "HELIOS2022"
         # re.split(
-            # "_[0-9]+", re.split("^[0-9]+-", self.file_name.split("-vs-")[0])[1])[0]  # ^[0-9]+-  yz modify
+        # "_[0-9]+", re.split("^[0-9]+-", self.file_name.split("-vs-")[0])[1])[0]  # ^[0-9]+-  yz modify
         self.right_team_name = "YuShan2022"
         # re.split(
         #     "_[0-9]+", self.file_name.split("-vs-")[1])[0]
@@ -112,6 +127,7 @@ class WorldModel:
                         self.rcl_r[rcl_cycle][rcl_unum] = PlayerObject(x=player_x, y=player_y, vx=player_vx,
                                                                        vy=player_vy, _unum=rcl_unum, action=action,
                                                                        team="right")
+        print("World Model init done!")
 
     @staticmethod
     def parse_rcl_actions(rcl_action, action):
@@ -119,7 +135,13 @@ class WorldModel:
             action['kick'] = [rcl_action.split('kick')[1].split(' ')[1],
                               rcl_action.split('kick')[1].split(' ')[2].split(')')[0]]
         if 'dash' in rcl_action:
-            action['dash'] = float(rcl_action.split('dash')[1].split(' ')[1].split(')')[0])
+            action['dash'] = [float(rcl_action.split('dash')[1].split(' ')[1].split(')')[0])] if '(' in \
+                                                                                                 rcl_action.split(
+                                                                                                     'dash')[
+                                                                                                     1].split(' ')[
+                                                                                                     1] else [
+                float(rcl_action.split('dash')[1].split(' ')[1]),
+                float(rcl_action.split('dash')[1].split(' ')[2].split(')')[0])]
         if 'catch' in rcl_action:
             action['catch'] = float(rcl_action.split('catch')[1].split(' ')[1].split(')')[0])
         if 'turn_neck' in rcl_action:
@@ -172,8 +194,8 @@ class WorldModel:
 
     def get_nearest_players_to_goalie(self, cycle):
         goalie = self.rcl_l[cycle][1]
-        our_players = self.rcl_l[cycle]
-        their_players = self.rcl_r[cycle]
+        our_players = self.rcl_l[cycle][2:]
+        their_players = self.rcl_r[cycle][1:]
         our_players.sort(key=lambda x: x.dist(goalie))
         their_players.sort(key=lambda x: x.dist(goalie))
         return our_players, their_players
@@ -230,7 +252,7 @@ class Vector2D:
     def absY(self):
         return abs(self.y)
 
-    def dist(self, other):
+    def dist(self, other) -> float:
         return ((self.x - other.x) ** 2 + (self.y - other.y) ** 2) ** 0.5
 
     def __add__(self, other):
@@ -264,6 +286,9 @@ class Rect2D:
 
     def center(self):
         return Vector2D(self.left() + self.width / 2, self.top() + self.height / 2)
+
+    def is_point_in(self, point):
+        return self.left() <= point.get_x() <= self.right() and self.top() <= point.get_y() <= self.bottom()
 
 
 class Ball:
